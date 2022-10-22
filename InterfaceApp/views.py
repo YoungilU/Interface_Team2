@@ -241,3 +241,46 @@ def mypage(request):
 
 def profile(request):
     return render(request, 'profile.html')
+from django.shortcuts import render
+from newsapi import NewsApiClient
+from datetime import datetime, timedelta
+
+def cultureNews(request):
+    newsapi = NewsApiClient(api_key="c66416a0443445a896fe5e0eff1b1bc5")
+    # topheadlines = newsapi.get_top_headlines(sources='bbc-news')
+    now = datetime.now()
+    before_one_day =  now - timedelta(days=25)
+
+    all_articles = newsapi.get_everything(q='art',
+                                          # sources='bbc-news,the-verge',
+                                          # domains='bbc.co.uk,techcrunch.com',
+                                          from_param=before_one_day,
+                                          to=now,
+                                          language='en',
+                                          sort_by='relevancy',
+                                          # page=1
+                                          )
+
+    # articles = topheadlines['articles']
+    articles = all_articles['articles']
+
+    desc = []
+    news = []
+    img = []
+    url = []
+
+    for i in range(len(articles)):
+        if i < 10:
+            myarticles = articles[i]
+
+            news.append(myarticles['title'])
+            desc.append(myarticles['description'])
+            img.append(myarticles['urlToImage'])
+            url.append(myarticles['url'])
+
+    mylist = zip(news, desc, img, url)
+
+
+    return render(request, 'single_pages/cultureNews.html', context={"mylist":mylist})
+
+
