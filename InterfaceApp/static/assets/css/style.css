@@ -870,7 +870,7 @@ section {
   position: relative;
   overflow: hidden;
   z-index: 1;
-  background: rgba(17, 17, 17, 0.6);
+  background: none;
 }
 
 .portfolio .portfolio-wrap::before {
@@ -2205,7 +2205,7 @@ section {
 .button_gray {
   color: #b3b3b3;
   border: none;
-  padding: 0;
+  padding: 0 5px;
   background: none;
   font-weight: bold;
 }

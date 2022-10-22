@@ -296,16 +296,19 @@
   <script>
     // WishList
     function addWishlist(id) {
-      const el = document.getElementById(id);
-      el.classList.toggle("button_red");
-
       let req = new XMLHttpRequest();
       let data = {
         performance_seq : id
       };
       req.onload = function() {
         let result = JSON.parse(req.responseText);
-        console.log(result['result']);
+        if (result['result'] == false) {
+          window.alert("로그인 해주세요.");
+        } else {
+          console.log(result['result']);
+          const el = document.getElementById(id);
+          el.classList.toggle("button_red");
+        };
       };
       req.open("POST", "/index/wishlist/add/");
       req.setRequestHeader('content-type', 'application/json');

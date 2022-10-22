@@ -48,10 +48,10 @@
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
+          <!--<li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>-->
           <li><a class="nav-link scrollto" href="#team">About us</a></li>
           <li><a href="/index/performance/">공연/전시 정보</a></li>
-          <li><a href="#">문화 관련 소식</a></li>
+          <li><a href="/index/news/">문화 뉴스</a></li>
           <li class="dropdown"><a href="/index/wishlist/"><span>My Page</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="/index/wishlist/">위시리스트</a></li>
@@ -72,7 +72,7 @@
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
 
-    <div class="container" data-aos="zoom-out" data-aos-delay="100">
+    <div class="container" data-aos="zoom-out" data-aos-delay="50">
       <div class="row">
         <div class="col-xl-6">
           <h1>Better culture experience with OnCulture<span style="color: #e03a3c;">.</span></h1>
@@ -93,31 +93,24 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Portfolio</h2>
-          <p></p>
+          <h2>현재 진행중인 공연 및 전시 포스터</h2>
+
         </div>
 
-        <div class="row" data-aos="fade-up" data-aos-delay="100">
+        <div class="row" data-aos="fade-up" data-aos-delay="50">
           <div class="col-lg-12 d-flex justify-content-center">
 
           </div>
         </div>
 
-        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
 
           <div class="col-lg-4 col-md-6 portfolio-item">
             <div class="portfolio-wrap">
-              <img src="{{ poster1 }}" class="img-fluid" alt="">
-
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item">
-            <div class="portfolio-wrap">
-              <img src="{{ poster2 }}" class="img-fluid" alt="">
+              <img src="{{ poster1.thumbnail }}" class="img-fluid" alt="">
               <div class="portfolio-info">
-                <h4></h4>
-                <p></p>
+                <h4>{{ poster1.title }}</h4>
+                <p>{{ poster1.place }}</p>
 
               </div>
             </div>
@@ -125,10 +118,10 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item">
             <div class="portfolio-wrap">
-              <img src="{{ poster3 }}" class="img-fluid" alt="">
+              <img src="{{ poster2.thumbnail }}" class="img-fluid" alt="">
               <div class="portfolio-info">
-                <h4></h4>
-                <p></p>
+                <h4>{{ poster2.title }}</h4>
+                <p>{{ poster2.place }}</p>
 
               </div>
             </div>
@@ -136,10 +129,10 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item">
             <div class="portfolio-wrap">
-              <img src="{{ poster4 }}" class="img-fluid" alt="">
+              <img src="{{ poster3.thumbnail }}" class="img-fluid" alt="">
               <div class="portfolio-info">
-                <h4></h4>
-                <p></p>
+                <h4>{{ poster3.title }}</h4>
+                <p>{{ poster3.place }}</p>
 
               </div>
             </div>
@@ -147,10 +140,10 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item">
             <div class="portfolio-wrap">
-              <img src="{{ poster5 }}" class="img-fluid" alt="">
+              <img src="{{ poster4.thumbnail }}" class="img-fluid" alt="">
               <div class="portfolio-info">
-                <h4></h4>
-                <p></p>
+                <h4>{{ poster4.title }}</h4>
+                <p>{{ poster4.place }}</p>
 
               </div>
             </div>
@@ -158,10 +151,21 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item">
             <div class="portfolio-wrap">
-              <img src="{{ poster6 }}" class="img-fluid" alt="">
+              <img src="{{ poster5.thumbnail }}" class="img-fluid" alt="">
               <div class="portfolio-info">
-                <h4></h4>
-                <p></p>
+                <h4>{{ poster5.title }}</h4>
+                <p>{{ poster5.place }}</p>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item">
+            <div class="portfolio-wrap">
+              <img src="{{ poster6.thumbnail }}" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>{{ poster6.title }}</h4>
+                <p>{{ poster6.place }}</p>
 
               </div>
             </div>
@@ -193,13 +197,13 @@
 
         <div class="section-title">
           <h2>Team</h2>
-          <p><strong>OnCulture</strong> 인터페이스 개발 프로젝트 담당자들을 소개합니다.</p>
+          <p><strong>OnCulture</strong> 인터페이스 개발 프로젝트 담당자를 소개합니다.</p>
         </div>
 
         <div class="row">
 
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-            <div class="member" data-aos="fade-up" data-aos-delay="100">
+            <div class="member" data-aos="fade-up" data-aos-delay="50">
               <div class="member-img">
                 <img src="{% static 'assets/img/team/team_1.jpg' %}" class="img-fluid" alt="">
 
@@ -232,7 +236,7 @@
               </div>
               <div class="member-info">
                 <h4>유영일</h4>
-                <span>sunforever58@gmail.com  /  조장</span>
+                <span>sunforever58@gmail.com</span>
               </div>
             </div>
           </div>
@@ -276,7 +280,7 @@
               <li><i class="bx bx-chevron-right"></i> <a href="#hero">Home</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#team">About us</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="/index/performance/">공연/전시 정보</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">문화 관련 뉴스</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/index/news/">문화 뉴스</a></li>
             </ul>
           </div>
 

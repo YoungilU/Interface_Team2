@@ -1,5 +1,5 @@
 from collections import OrderedDict
-
+from datetime import date, timedelta
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import auth
@@ -9,14 +9,15 @@ import random
 import math
 import json
 from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exemp
+from django.views.decorators.csrf import csrf_exempt
 
 def index(request):
     context = None
     logineduser = False
     if request.user.is_authenticated:
         logineduser = request.user.first_name + request.user.last_name
-    posters = PerformanceDB.objects.values_list('thumbnail', flat=True)
+    today = date.today().isoformat()
+    posters = PerformanceDB.objects.filter(startDate__lte=today, endDate__gt=today)
     pick = random.sample(list(posters), 6)
     context = {'logineduser': logineduser,
                'poster1': pick[0],
@@ -204,18 +205,22 @@ def wishlist(request):
 def add_wishlist(request):
     data = json.loads(request.body)
     wish_item = data['performance_seq']
-    user_id = request.user.id
 
-    get_list = WishlistDB.objects.filter(user_id=user_id)
-    #print(get_list.values_list('performance_seq', flat=True))
-    if wish_item not in get_list.values_list('performance_seq', flat=True):
-        row = WishlistDB(user_id=User.objects.get(pk=user_id), performance_seq=PerformanceDB.objects.get(pk=wish_item))
-        row.save()
-        result = {'result': f"performance_seq {wish_item} added to the WishlistDB"}
+    if request.user.is_authenticated:
+        user_id = request.user.id
+        print(user_id)
+        get_list = WishlistDB.objects.filter(user_id=user_id)
+        #print(get_list.values_list('performance_seq', flat=True))
+        if wish_item not in get_list.values_list('performance_seq', flat=True):
+            row = WishlistDB(user_id=User.objects.get(pk=user_id), performance_seq=PerformanceDB.objects.get(pk=wish_item))
+            row.save()
+            result = {'result': f"performance_seq {wish_item} added to the WishlistDB"}
+        else:
+            #row = WishlistDB.objects.get(performance_seq=wish_item)
+            #row.delete()
+            result = {'result': f"performance_seq {wish_item} is already exist in the WishlistDB"}
     else:
-        #row = WishlistDB.objects.get(performance_seq=wish_item)
-        #row.delete()
-        result = {'result': f"performance_seq {wish_item} is already exist in the WishlistDB"}
+        result = {'result': False}
     return JsonResponse(result, content_type='application/json')
 
 @csrf_exempt

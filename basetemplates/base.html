@@ -6,6 +6,10 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>OnCulture</title>
+
+  {% block script %}
+  {% endblock %}
+
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -48,11 +52,16 @@
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
           <li><a href="/index/#hero">Home</a></li>
-          <li><a href="/index/#portfolio">Portfolio</a></li>
+          <!--<li><a href="/index/#portfolio">Portfolio</a></li>-->
           <li><a href="/index/#team">About us</a></li>
           <li><a href="/index/performance/">공연/전시 정보</a></li>
-          <li><a href="/index/news/">문화 관련 소식</a></li>
-          <li><a href="/index/wishlist/">위시리스트</a></li>
+          <li><a href="/index/news/">문화 뉴스</a></li>
+          <li class="dropdown"><a href="/index/wishlist/"><span>My Page</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="/index/wishlist/">위시리스트</a></li>
+              <li><a href="/index/memberedit/">회원정보 수정</a></li>
+            </ul>
+          </li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -87,7 +96,7 @@
               <li><i class="bx bx-chevron-right"></i> <a href="/index/#hero">Home</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="/index/#team">About us</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="/index/performance/">공연/전시 정보</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="/index/news/">문화 관련 뉴스</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/index/news/">문화 뉴스</a></li>
             </ul>
           </div>
 
