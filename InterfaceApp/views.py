@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib import auth
 from .models import PerformanceDB, WishlistDB
 from django.core.paginator import Paginator
+from .forms import UpdateUserForm
 import random
 import math
 import json
@@ -15,7 +16,7 @@ def index(request):
     context = None
     logineduser = False
     if request.user.is_authenticated:
-        logineduser = request.user.first_name + request.user.last_name
+        logineduser =   request.user.last_name + request.user.first_name
     today = date.today().isoformat()
     posters = PerformanceDB.objects.filter(startDate__lte=today, endDate__gt=today)
     pick = random.sample(list(posters), 6)
@@ -240,10 +241,16 @@ def mypage(request):
     return render(request, 'mypage.html')
 
 def profile(request):
-    return render(request, 'profile.html')
-from django.shortcuts import render
-from newsapi import NewsApiClient
-from datetime import datetime, timedelta
+res_data = None
+if request.method =='POST':
+updateform = UpdateUserForm(request.POST, instance=request.user)
+if updateform.is_valid():
+updateform.save()
+return redirect("InterfaceApp:index")
+else :
+update_user_form = UpdateUserForm(instance=request.user)
+res_data = {'update_user_form': update_user_form}
+return render(request, 'profile.html', res_data)
 
 def cultureNews(request):
     newsapi = NewsApiClient(api_key="c66416a0443445a896fe5e0eff1b1bc5")
