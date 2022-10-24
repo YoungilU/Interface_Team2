@@ -253,8 +253,8 @@ def profile(request):
     res_data = None
     if request.method =='POST':
         updateform = UpdateUserForm(request.POST, instance=request.user)
-    if updateform.is_valid():
-        updateform.save()
+        if updateform.is_valid():
+            updateform.save()
         return redirect("InterfaceApp:index")
     else :
         update_user_form = UpdateUserForm(instance=request.user)
