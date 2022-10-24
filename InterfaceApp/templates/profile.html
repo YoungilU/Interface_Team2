@@ -15,125 +15,124 @@
 <style>
 
 .form-control {
-	height: 41px;
-	background: #f2f2f2;
-	box-shadow: none !important;
-	border: none;
+height: 41px;
+background: #f2f2f2;
+box-shadow: none !important;
+border: none;
 
 }
 .form-control:focus {
-	background: #e2e2e2;
+background: #e2e2e2;
 }
 .form-control, .btn {
-	border-radius: 3px;
+border-radius: 3px;
 }
 .profile-form {
-	width: 900px;
-	margin: 120px auto;
+width: 900px;
+margin: 120px auto;
 }
 .profile-form form {
-	color: #999;
-	border-radius: 3px;
-	margin-bottom: 15px;
-	background: #fff;
-	box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
-	padding: 30px;
+color: #999;
+border-radius: 3px;
+margin-bottom: 15px;
+background: #fff;
+box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
+padding: 30px;
 }
-.profile-form h2  {
-	color: #333;
-	font-weight: bold;
-	margin-top: 0;
+.profile-form h2 {
+color: #333;
+font-weight: bold;
+margin-top: 0;
 }
-.profile-form hr  {
-	margin: 0 -30px 20px;
+.profile-form hr {
+margin: 0 -30px 20px;
 }
 .profile-form .form-group {
-	margin-bottom: 20px;
+margin-bottom: 20px;
 }
 .profile-form input[type="checkbox"] {
-	margin-top: 3px;
+margin-top: 3px;
 }
 .profile-form .row div:first-child {
-	padding-right: 10px;
+padding-right: 10px;
 }
 .profile-form .row div:last-child {
-	padding-left: 10px;
+padding-left: 10px;
 }
 .profile-form .btn {
-	font-size: 16px;
-	font-weight: bold;
-	background: #3598dc;
-	border: none;
-	min-width: 140px;
+font-size: 16px;
+font-weight: bold;
+background: #3598dc;
+border: none;
+min-width: 140px;
 }
 .profile-form .btn:hover, .signup-form .btn:focus {
-	background: #2389cd !important;
-	outline: none;
+background: #2389cd !important;
+outline: none;
 }
 .profile-form a {
-	color: #fff;
-	text-decoration: underline;
+color: #fff;
+text-decoration: underline;
 }
 .profile-form a:hover {
-	text-decoration: none;
+text-decoration: none;
 }
 .profile-form form a {
-	color: #3598dc;
-	text-decoration: none;
+color: #3598dc;
+text-decoration: none;
 }
 .profile-form a:hover {
-	text-decoration: underline;
+text-decoration: underline;
 }
-.profile-form .hint-text  {
-	padding-bottom: 15px;
-	text-align: center;
+.profile-form .hint-text {
+padding-bottom: 15px;
+text-align: center;
 }
 </style>
 </head>
 
-  <main id="main">
-    <body>
+<main id="main">
+<body>
 
-    <!-- ======= Breadcrumbs ======= -->
-    <section class="breadcrumbs">
-      <div class="container">
-        <ol>
-          <li><a href="/index/">Home</a></li>
-          <li>Member Edit</li>
-        </ol>
-        <h2>회원정보 수정</h2>
-      </div>
-    </section><!-- End Breadcrumbs -->
+<!-- ======= Breadcrumbs ======= -->
+<section class="breadcrumbs">
+<div class="container">
+<ol>
+<li><a href="/index/">Home</a></li>
+<li>Member Edit</li>
+</ol>
+<h2>회원정보 수정</h2>
+</div>
+</section><!-- End Breadcrumbs -->
 <div class="profile-form">
-    <form method="POST" action="{% url 'InterfaceApp:profile' %}">
-        {% csrf_token %}
-		<h2>&#127775;회원정보 수정</h2>
-		<hr>
-        <div class="form-group">
-			<div class="row">
-				<div class="col"><input type="text" class="form-control" name="first_name" placeholder="First Name" required="required"></div>
-				<div class="col"><input type="text" class="form-control" name="last_name" placeholder="Last Name" required="required"></div>
-			</div>
-        </div>
-        <div class="form-group">
-        	<input type="email" class="form-control" name="useremail" placeholder="Email" required="required">
-        </div>
-		<div class="form-group">
-            <input type="password" class="form-control" name="password" placeholder="Password" required="required">
-        </div>
-		<div class="form-group">
-            <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required="required">
-        </div>
-		<div class="form-group">
-            <button type="submit" class="btn btn-primary btn-lg">수정완료</button>
-        </div>
-    </form>
-    </body>
-  </main>
+<form method="POST" action="{% url 'InterfaceApp:profile' %}">
+{% csrf_token %}
+<h2>&#127775;회원정보 수정</h2>
+<hr>
+<div class="form-group">
+<div class="row">
+<div class="col"><input type="text" class="form-control" name="first_name" placeholder="First Name" required="required"></div>
+<div class="col"><input type="text" class="form-control" name="last_name" placeholder="Last Name" required="required"></div>
+</div>
+</div>
+<div class="form-group">
+<input type="email" class="form-control" name="useremail" placeholder="Email" required="required">
+</div>
+<div class="form-group">
+<input type="password" class="form-control" name="password" placeholder="Password" required="required">
+</div>
+<div class="form-group">
+<input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required="required">
+</div>
+<div class="form-group">
+<button type="submit" class="btn btn-primary btn-lg">수정완료</button>
+</div>
+</form>
+</body>
+</main>
 
 
 
-  <script>
-  </script>
+<script>
+</script>
 {% endblock %}
-

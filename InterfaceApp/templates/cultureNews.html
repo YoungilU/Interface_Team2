@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block script %}
+    <script src="https://kit.fontawesome.com/726bbd6862.js" crossorigin="anonymous"></script>
+{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'blog/bootstrap/bootstrap.min.css' %}" media="screen">
+    <link rel="stylesheet" href="{% static 'single_pages/css/landing.css' %}?after" media="screen">
+{% endblock %}
+
+{% block content %}
+
+
+
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+        <ol>
+          <li><a href="/index/">Home</a></li>
+          <li>World Culture News</li>
+        </ol>
+        <h2>세계문화뉴스</h2>
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section id="blog" class="blog">
+    <div class="container" data-aos="fade-up">
+        <div class="row justify-content-between">
+        <div class="col-lg-6 text-light">
+            <br>
+        </div>
+        <div class="row justify-content-between">
+        {% for new, des, i, url in mylist %}
+            <h2 style="font-style: bold;">{{new}}</h2>
+            <br>
+            <div style="display: flex; margin-top: 10px; margin-bottom: 20px;">
+                <img src="{{i}}" style="height:200px; margin-right: 10px;">
+                <h5>{{des}}</h5><br>
+            </div>
+            <div class="culture-news-read-more" style="margin-bottom: 20px;">
+              <a href={{url}}>사이트로 이동</a>
+            </div>
+            <hr>
+        {% endfor %}
+        </div>
+    </div>
+    </div>
+    </section>
+{% endblock %}

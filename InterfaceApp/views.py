@@ -1,21 +1,24 @@
 from collections import OrderedDict
 from datetime import date, timedelta
+import datetime
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import auth
 from .models import PerformanceDB, WishlistDB
 from django.core.paginator import Paginator
+from .forms import UpdateUserForm
 import random
 import math
 import json
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from newsapi import NewsApiClient
 
 def index(request):
     context = None
     logineduser = False
     if request.user.is_authenticated:
-        logineduser = request.user.first_name + request.user.last_name
+        logineduser =   request.user.last_name + request.user.first_name
     today = date.today().isoformat()
     posters = PerformanceDB.objects.filter(startDate__lte=today, endDate__gt=today)
     pick = random.sample(list(posters), 6)
@@ -247,4 +250,53 @@ def mypage(request):
     return render(request, 'mypage.html')
 
 def profile(request):
-    return render(request, 'profile.html')
+    res_data = None
+    if request.method =='POST':
+        updateform = UpdateUserForm(request.POST, instance=request.user)
+    if updateform.is_valid():
+        updateform.save()
+        return redirect("InterfaceApp:index")
+    else :
+        update_user_form = UpdateUserForm(instance=request.user)
+        res_data = {'update_user_form': update_user_form}
+    return render(request, 'profile.html', res_data)
+
+def cultureNews(request):
+    newsapi = NewsApiClient(api_key="a0db7cba667442de809bda78921a0573")
+    # topheadlines = newsapi.get_top_headlines(sources='bbc-news')
+    now = datetime.datetime.now()
+    before_one_day =  now - timedelta(days=25)
+
+    all_articles = newsapi.get_everything(q='art',
+                                          # sources='bbc-news,the-verge',
+                                          # domains='bbc.co.uk,techcrunch.com',
+                                          from_param=before_one_day,
+                                          to=now,
+                                          language='en',
+                                          sort_by='relevancy',
+                                          # page=1
+                                          )
+    #print(help(newsapi.get_everything))
+    # articles = topheadlines['articles']
+    articles = all_articles['articles']
+
+    desc = []
+    news = []
+    img = []
+    url = []
+
+    for i in range(len(articles)):
+        if i < 10:
+            myarticles = articles[i]
+
+            news.append(myarticles['title'])
+            desc.append(myarticles['description'])
+            img.append(myarticles['urlToImage'])
+            url.append(myarticles['url'])
+
+    mylist = zip(news, desc, img, url)
+
+
+    return render(request, 'cultureNews.html', context={"mylist":mylist})
+
+
