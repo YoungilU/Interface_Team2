@@ -52,14 +52,15 @@
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
           <li><a href="/index/#hero">Home</a></li>
-          <!--<li><a href="/index/#portfolio">Portfolio</a></li>-->
+          <li><a href="/index/#portfolio">Portfolio</a></li>
           <li><a href="/index/#team">About us</a></li>
           <li><a href="/index/performance/">공연/전시 정보</a></li>
           <li><a href="/index/cultureNews/">세계문화뉴스</a></li>
+          <li><a href="httpsL//hsollc1.herokuapp.com">블로그</a></li>
           <li class="dropdown"><a href="/index/wishlist/"><span>My Page</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="/index/wishlist/">위시리스트</a></li>
-              <li><a href="/index/memberedit/">회원정보 수정</a></li>
+              <li><a href="/index/profile/">회원정보 수정</a></li>
             </ul>
           </li>
         </ul>
@@ -71,10 +72,32 @@
       <a href="/index/login/" class="get-started-btn scrollto">로그인&nbsp; / &nbsp;회원가입</a>
       {% endif %}
     </div>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6YXK7R2G82"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6YXK7R2G82');
+</script>
+
   </header><!-- End Header -->
+
 
   {% block content %}
   {% endblock %}
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6YXK7R2G82"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6YXK7R2G82');
+</script>
+
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
@@ -94,9 +117,11 @@
             <h4>Links</h4>
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="/index/#hero">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/index/#portfolio">Poster</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="/index/#team">About us</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="/index/performance/">공연/전시 정보</a></li>
                <li><i class="bx bx-chevron-right"></i> <a href="/index/cultureNews/">세계문화뉴스</a></li>
+              <li><i class="bx bx-chevron-right"></i>  <a href="httpsL//hsollc1.herokuapp.com">블로그</a></li>
             </ul>
           </div>
 
