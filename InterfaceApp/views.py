@@ -191,15 +191,22 @@ def apitest(request):
 
 def wishlist(request):
     context = None
-    user_id = request.user.id
+    msg = None
     wish_list = []
-    get_list = WishlistDB.objects.filter(user_id=user_id)
-
-    for i in range(len(get_list)):
-        wish_list.append(get_list[i].performance_seq)
+    if not request.user.is_authenticated:
+        msg = "로그인 해주세요."
+    else:
+        user_id = request.user.id
+        get_list = WishlistDB.objects.filter(user_id=user_id)
+        if get_list:
+            for i in range(len(get_list)):
+                wish_list.append(get_list[i].performance_seq)
+        else:
+            msg = "위시리스트에 등록된 아이템이 없습니다."
 
     context = {
         'wishlist': wish_list,
+        'msg': msg,
     }
     return render(request, 'wishlist.html', context)
 

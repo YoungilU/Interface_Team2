@@ -24,16 +24,19 @@
       <div class="container" data-aos="fade-up">
         <div class="row">
           <div class="col-lg-12 entries">
+            {% if msg != None %}
+              <h3 style="color:#e03a3c;">{{ msg }}</h3>
+            {% else %}
               <table>
                 <thead style="text-align:center; border-bottom:1px solid black; background-color:#e6e6e6;">
                   <tr style="">
-                    <th> </th>
-                    <th>제  목</th>
-                    <th>시작일</th>
-                    <th>마감일</th>
-                    <th>장소</th>
-                    <th style="padding:5px;">지역</th>
-                    <th style="padding:5px;">분류</th>
+                    <th style="width: 100px;"> </th>
+                    <th style="padding:10px;">제  목</th>
+                    <th style="padding:10px;">시작일</th>
+                    <th style="padding:10px;">마감일</th>
+                    <th style="padding:10px;">장소</th>
+                    <th style="padding:10px;">지역</th>
+                    <th style="padding:10px;">분류</th>
                     <th> </th>
                   </tr>
                 </thead>
@@ -41,10 +44,10 @@
                   {% for item in wishlist %}
                   <tr id="{{item.seq}}" style="border-bottom: 1px solid lightgray;">
                     <td><img src="{{item.thumbnail}}" style="width: 100px;"></td>
-                    <td>{{item.title}}</td>
-                    <td style="text-align:center; padding:0px 5px; width:100px;">{{item.startDate}}</td>
-                    <td style="text-align:center; padding:0px 5px; width:100px;">{{item.endDate}}</td>
-                    <td style="padding:0px 5px;">{{item.place}}</td>
+                    <td style="padding:0px 5px;">{{item.title}}</td>
+                    <td style="text-align:center; padding:0px 10px;">{{item.startDate}}</td>
+                    <td style="text-align:center; padding:0px 10px;">{{item.endDate}}</td>
+                    <td style="text-align:center; padding:0px 5px;">{{item.place}}</td>
                     <td style="text-align:center; padding:0px 5px;">{{item.area}}</td>
                     <td style="text-align:center; padding:0px 5px;">{{item.realmName}}</td>
                     <td><button class="button_gray" onclick="delWishlist({{item.seq}})">ⓧ</button></td>
@@ -52,6 +55,7 @@
                   {% endfor %}
                 </tbody>
               </table>
+            {% endif %}
               <br>
           </div><!-- End blog entries list -->
         </div>
