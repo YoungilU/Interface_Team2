@@ -2213,3 +2213,22 @@ section {
 .button_red {
   color: #e03a3c;
 }
+
+.culture-news-read-more {
+  -moz-text-align-last: right;
+  text-align-last: right;
+}
+
+.culture-news-read-more a {
+  display: inline-block;
+  background: #e03a3c;
+  color: #fff;
+  padding: 6px 20px;
+  transition: 0.3s;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.culture-news-read-more a:hover {
+  background: #e35052;
+}

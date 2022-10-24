@@ -255,7 +255,7 @@ def profile(request):
     return render(request, 'profile.html', res_data)
 
 def cultureNews(request):
-    newsapi = NewsApiClient(api_key="c66416a0443445a896fe5e0eff1b1bc5")
+    newsapi = NewsApiClient(api_key="a0db7cba667442de809bda78921a0573")
     # topheadlines = newsapi.get_top_headlines(sources='bbc-news')
     now = datetime.datetime.now()
     before_one_day =  now - timedelta(days=25)
