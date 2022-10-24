@@ -1,5 +1,6 @@
 from collections import OrderedDict
 from datetime import date, timedelta
+import datetime
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import auth
@@ -11,6 +12,7 @@ import math
 import json
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from newsapi import NewsApiClient
 
 def index(request):
     context = None
@@ -241,21 +243,21 @@ def mypage(request):
     return render(request, 'mypage.html')
 
 def profile(request):
-res_data = None
-if request.method =='POST':
-updateform = UpdateUserForm(request.POST, instance=request.user)
-if updateform.is_valid():
-updateform.save()
-return redirect("InterfaceApp:index")
-else :
-update_user_form = UpdateUserForm(instance=request.user)
-res_data = {'update_user_form': update_user_form}
-return render(request, 'profile.html', res_data)
+    res_data = None
+    if request.method =='POST':
+        updateform = UpdateUserForm(request.POST, instance=request.user)
+    if updateform.is_valid():
+        updateform.save()
+        return redirect("InterfaceApp:index")
+    else :
+        update_user_form = UpdateUserForm(instance=request.user)
+        res_data = {'update_user_form': update_user_form}
+    return render(request, 'profile.html', res_data)
 
 def cultureNews(request):
     newsapi = NewsApiClient(api_key="c66416a0443445a896fe5e0eff1b1bc5")
     # topheadlines = newsapi.get_top_headlines(sources='bbc-news')
-    now = datetime.now()
+    now = datetime.datetime.now()
     before_one_day =  now - timedelta(days=25)
 
     all_articles = newsapi.get_everything(q='art',
@@ -267,7 +269,7 @@ def cultureNews(request):
                                           sort_by='relevancy',
                                           # page=1
                                           )
-
+    #print(help(newsapi.get_everything))
     # articles = topheadlines['articles']
     articles = all_articles['articles']
 
@@ -288,6 +290,6 @@ def cultureNews(request):
     mylist = zip(news, desc, img, url)
 
 
-    return render(request, 'single_pages/cultureNews.html', context={"mylist":mylist})
+    return render(request, 'cultureNews.html', context={"mylist":mylist})
 
 

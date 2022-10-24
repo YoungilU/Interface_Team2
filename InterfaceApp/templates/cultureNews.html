@@ -1,17 +1,30 @@
+{% extends 'base.html' %}
 {% load static %}
-<html lang="ko" xmlns="http://www.w3.org/1999/html">
-<head>
-    <meta charset="UTF-8">
-    <title>HSOLLC</title>
-
+{% block script %}
+    <script src="https://kit.fontawesome.com/726bbd6862.js" crossorigin="anonymous"></script>
+{% endblock %}
+{% block css %}
     <link rel="stylesheet" href="{% static 'blog/bootstrap/bootstrap.min.css' %}" media="screen">
     <link rel="stylesheet" href="{% static 'single_pages/css/landing.css' %}?after" media="screen">
-    <script src="https://kit.fontawesome.com/726bbd6862.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block content %}
 
 
-</head>
 <body>
-{% include 'blog/navbar.html' %}
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="/index/">Home</a></li>
+          <li>Wish List</li>
+        </ol>
+        <h2>위시리스트</h2>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
 
 <section>
         <div class="row justify-content-between">
@@ -33,7 +46,6 @@
 </section>
 
 <div class="fixed-bottom">
-    {% include 'blog/footer.html' %}
 </div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -67,3 +79,4 @@
     })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+{% endblock %}

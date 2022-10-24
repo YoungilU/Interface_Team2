@@ -15,5 +15,5 @@ urlpatterns = [
     path('wishlist/del/', views.del_wishlist, name='wishlist_d'),
     path('wishlist/add/', views.add_wishlist, name='wishlist_c'),
     path('profile/', views.profile, name='profile'),
-    path('headline/', views.headline, name='headline'),
+    path('cultureNews/', views.cultureNews, name='cultureNews'),
 ]
