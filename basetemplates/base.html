@@ -111,10 +111,10 @@
               <li><i class="bx bx-chevron-right"></i> <a href="/index/wishlist/">위시리스트</a></li>
             </ul>
             <ul>
-              {% if not logineduser %}
-              <li><i class="bx bx-chevron-right"></i> <a href="/index/login/">회원정보 수정</a></li>
-              {% else %}
+              {% if request.user.is_authenticated %}
               <li><i class="bx bx-chevron-right"></i> <a href="/index/profile/">회원정보 수정</a></li>
+              {% else %}
+              <li><i class="bx bx-chevron-right"></i> <a href="/index/login/">회원정보 수정</a></li>
               {% endif %}
             </ul>
           </div>
