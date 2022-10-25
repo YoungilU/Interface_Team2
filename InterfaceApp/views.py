@@ -21,7 +21,7 @@ def index(request):
         logineduser =   request.user.last_name + request.user.first_name
     today = date.today().isoformat()
     posters = PerformanceDB.objects.filter(startDate__lte=today, endDate__gt=today)
-    pick = random.sample(list(posters), 6)
+    pick = random.sample(list(posters), 8)
     context = {'logineduser': logineduser,
                'poster1': pick[0],
                'poster2': pick[1],
@@ -29,6 +29,8 @@ def index(request):
                'poster4': pick[3],
                'poster5': pick[4],
                'poster6': pick[5],
+               'poster7': pick[6],
+               'poster8': pick[7],
                }
     return render(request, "index.html", context)
 
