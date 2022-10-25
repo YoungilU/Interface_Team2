@@ -12,7 +12,7 @@
       <div class="container">
 
         <ol>
-          <li><a href="/index/">Home</a></li>
+          <li><a href="/index/">홈</a></li>
           <li>Wish List</li>
         </ol>
         <h2>위시리스트</h2>
@@ -44,7 +44,7 @@
                   {% for item in wishlist %}
                   <tr id="{{item.seq}}" style="border-bottom: 1px solid lightgray;">
                     <td><img src="{{item.thumbnail}}" style="width: 100px;"></td>
-                    <td style="padding:0px 5px;">{{item.title}}</td>
+                    <td style="padding:0px 5px;"><a href="{{item.site}}">{{item.title}}</a></td>
                     <td style="text-align:center; padding:0px 10px;">{{item.startDate}}</td>
                     <td style="text-align:center; padding:0px 10px;">{{item.endDate}}</td>
                     <td style="text-align:center; padding:0px 5px;">{{item.place}}</td>
