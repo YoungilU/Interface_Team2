@@ -47,18 +47,18 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#portfolio">Poster</a></li>
-          <li><a class="nav-link scrollto" href="#team">About us</a></li>
-          <li><a href="/index/performance/">공연/전시 정보</a></li>
-          <li><a href="/index/cultureNews/"> 세계문화뉴스 </a></li>
-          <li class="dropdown"><a href="/index/wishlist/"><span>My Page</span> <i class="bi bi-chevron-down"></i></a>
+          <li><a class="nav-link scrollto active" href="#hero" title="Home">홈</a></li>
+          <li><a class="nav-link scrollto" href="#portfolio" title="Poster">포스터</a></li>
+          <li><a class="nav-link scrollto" href="#team" title="About us">소개</a></li>
+          <li><a href="/index/performance/" title="Performances & Exhibitions">공연/전시정보</a></li>
+          <li><a href="/index/cultureNews/" title="World Culture News"> 세계문화뉴스 </a></li>
+          <li class="dropdown"><a href="/index/wishlist/" title="My Page"><span>마이페이지</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="/index/wishlist/">위시리스트</a></li>
+              <li><a href="/index/wishlist/" title="Wish List">위시리스트</a></li>
               {% if not logineduser %}
-              <li><a href="/index/login/">회원정보 수정</a></li>
+              <li><a href="/index/login/" title="Edit Profile">회원정보 수정</a></li>
               {% else %}
-              <li><a href="/index/profile/">회원정보 수정</a></li>
+              <li><a href="/index/profile/" title="Edit Profile">회원정보 수정</a></li>
               {% endif %}
             </ul>
           </li>
@@ -319,19 +319,25 @@
           <div class="col-lg-2 col-md-6 footer-links">
             <h4>Links</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#hero">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#portfolio">Poster</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#team">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="/index/performance/">공연/전시 정보</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#hero">홈</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#portfolio">포스터</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#team">소개</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/index/performance/">공연/전시정보</a></li>
                <li><i class="bx bx-chevron-right"></i> <a href="/index/cultureNews/">세계문화뉴스</a></li>
-
             </ul>
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Services</h4>
+            <h4>마이페이지</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="">Web Development</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/index/wishlist/">위시리스트</a></li>
+            </ul>
+            <ul>
+              {% if not logineduser %}
+              <li><i class="bx bx-chevron-right"></i> <a href="/index/login/">회원정보 수정</a></li>
+              {% else %}
+              <li><i class="bx bx-chevron-right"></i> <a href="/index/profile/">회원정보 수정</a></li>
+              {% endif %}
             </ul>
           </div>
 
