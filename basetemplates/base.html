@@ -102,9 +102,16 @@
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Services</h4>
+            <h4>My Page</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/index/wishlist/">위시리스트</a></li>
+            </ul>
+            <ul>
+              {% if not logineduser %}
+              <li><i class="bx bx-chevron-right"></i> <a href="/index/login/">회원정보 수정</a></li>
+              {% else %}
+              <li><i class="bx bx-chevron-right"></i> <a href="/index/profile/">회원정보 수정</a></li>
+              {% endif %}
             </ul>
           </div>
 
