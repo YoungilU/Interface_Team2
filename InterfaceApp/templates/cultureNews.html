@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block script %}
 <!-- Google tag (gtag.js) -->
+    <script src="https://kit.fontawesome.com/726bbd6862.js" crossorigin="anonymous"></script>
+    <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6YXK7R2G82"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -8,10 +12,6 @@
 
   gtag('config', 'G-6YXK7R2G82');
 </script>
-
-{% load static %}
-{% block script %}
-    <script src="https://kit.fontawesome.com/726bbd6862.js" crossorigin="anonymous"></script>
 {% endblock %}
 {% block css %}
     <link rel="stylesheet" href="{% static 'blog/bootstrap/bootstrap.min.css' %}" media="screen">
@@ -24,18 +24,14 @@
 
 
     <!-- ======= Breadcrumbs ======= -->
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-6YXK7R2G82"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-6YXK7R2G82');
-</script>
 
     <section class="breadcrumbs">
       <div class="container">
+          <div id="google_translate_element"></div>
+            <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+            <script type="text/javascript">
+                function googleTranslateElementInit() {new google.translate.TranslateElement({pageLanguage: 'ko',autoDisplay: false}, 'google_translate_element');}
+            </script>
         <ol>
           <li><a href="/index/">홈</a></li>
           <li>World Culture News</li>
@@ -67,4 +63,180 @@
     </div>
     </div>
     </section>
+<br><br> <div class="container">
+            <div class="title-box left">Type To Speak</div>
+            <form id="form">
+            <div class="form-group">
+            <textarea
+            class="textarea-cont margin-radius"
+            id="text-input"
+            cols="130"
+            rows="7"
+            placeholder="Write, Type or Copy and Paste any sentences to be translated..."></textarea>
+            <div class="container less-width">
+            <label for="rate" class="text-size center label-pos margin-radius">Rate</label>
+            <div id="rate-value" class="float-right">1</div>
+            <input type="range" class="input-range margin-radius" id="rate" min="0" max="2" value="1" step="0.1">
+
+            <label for="pitch" class="text-size center label-pos margin-radius">Pitch</label>
+            <div class="float-right" id="pitch-value">1</div>
+            <input type="range" class="input-range margin-radius" id="pitch" min="0" max="2" value="1" step="0.1">
+            </div>
+            <label class="text-size speaker-select-label">Choose the speaker:</label>
+            <select id="voice-select" class="form-control margin-radius"></select>
+            </div>
+            <button class="btn margin-radius" >Speak</button>
+            </form>
+            </div>
+
+<script  type="text/javascript">
+    //  Init SpeechSynth API
+const synth = window.speechSynthesis;
+
+//  DOM elements
+const textForm = document.querySelector("#form");
+const textInput = document.querySelector("#text-input");
+const voiceSelect = document.querySelector("#voice-select");
+const rate = document.querySelector("#rate");
+const rateValue = document.querySelector("#rate-value");
+const pitch = document.querySelector("#pitch");
+const pitchValue = document.querySelector("#pitch-value");
+
+// Init voices array
+let voices = [];
+
+const getVoices = () => {
+  voices = synth.getVoices();
+
+  // Loop through voices and create an option for each one
+  voices.forEach(voice => {
+    // Create an option element
+    const option = document.createElement('option');
+    // Fill the option with voices and lang
+    option.textContent = voice.name + '(' + voice.lang + ')';
+
+    // Set needed option attributes
+    option.setAttribute("data-lang", voice.lang);
+    option.setAttribute("data-name", voice.name);
+    voiceSelect.appendChild(option);
+  });
+};
+
+getVoices();
+if (synth.onvoiceschanged !== undefined) {
+  synth.onvoiceschanged = getVoices;
+}
+
+// Speak
+const speak = () => {
+  // Check if speaking
+  if (synth.speaking) {
+    console.error("Already Speaking...");
+    return;
+  }
+  if (textInput.value !== "") {
+    // Get speak text
+    const speakText = new SpeechSynthesisUtterance(textInput.value);
+    // Speak end
+    speakText.onend = (e) => {
+      console.log("Done speaking...");
+    };
+
+    // Speak error
+    speakText.onerror = (e) => {
+      console.error("Something went wrong!");
+    };
+
+    //  Selected voice
+    const selectedVoice =
+      voiceSelect.selectedOptions[0].getAttribute("data-name");
+
+    //  Loop through voices
+    voices.forEach((voice) => {
+      if (voice.name === selectedVoice) {
+        speakText.voice = voice;
+      }
+    });
+
+    // Set pitch and rate
+    speakText.rate = rate.value;
+    speakText.pitch = pitch.value;
+    // Speak
+    synth.speak(speakText)
+  }
+};
+
+
+//  Event LISTENERS
+
+// Text form submit
+textForm.addEventListener("submit",e => {
+  e.preventDefault();
+  speak();
+  textInput.blur();
+});
+
+// Rate value change
+rate.addEventListener("change",e => rateValue.textContent = rate.value);
+
+// Pitch value change
+pitch.addEventListener("change",e => pitchValue.textContent = pitch.value);
+
+// voice select change
+voiceSelect.addEventListener("change",e => {
+  speak()
+  console.log(speak);
+
+});
+</script>
+
+<div class="fixed-bottom">
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+<!--chatting tag-->
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6329b5b654f06e12d895cc2a/1gdderkmj';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+</body>
+</html>
+<!--comments tag-->
+<div id="disqus_thread"></div>
+<script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://web1-xs4erwk08l.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 {% endblock %}
