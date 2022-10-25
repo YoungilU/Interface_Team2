@@ -1,4 +1,5 @@
 # Interface_Team2
+0.체크사항: newsapi apikey무료버젼의 경우 제한(필요시 각자 명의로 추가신청 내지 변경 필요)
 1. 번역 등 일부기능 추가(기 push 함): 조정작업필요- push한 것은 참조(임의 삭제.수정요망)
 2. 링크로 연결과 코드 통합작업
 가.링크: pythonanywhere, heroku 상 애러 
