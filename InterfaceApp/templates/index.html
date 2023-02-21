@@ -47,18 +47,18 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero" title="Home">홈</a></li>
-          <li><a class="nav-link scrollto" href="#portfolio" title="Poster">포스터</a></li>
-          <li><a class="nav-link scrollto" href="#team" title="About us">소개</a></li>
-          <li><a href="/index/performance/" title="Performances & Exhibitions">공연/전시정보</a></li>
-          <li><a href="/index/cultureNews/" title="World Culture News"> 세계문화뉴스 </a></li>
-          <li class="dropdown"><a href="/index/wishlist/" title="My Page"><span>마이페이지</span> <i class="bi bi-chevron-down"></i></a>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#portfolio">Poster</a></li>
+          <li><a class="nav-link scrollto" href="#team">About us</a></li>
+          <li><a href="/index/performance/">공연/전시 정보</a></li>
+          <li><a href="/index/cultureNews/"> 세계문화뉴스 </a></li>
+          <li class="dropdown"><a href="/index/wishlist/"><span>My Page</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="/index/wishlist/" title="Wish List">위시리스트</a></li>
+              <li><a href="/index/wishlist/">위시리스트</a></li>
               {% if not logineduser %}
-              <li><a href="/index/login/" title="Edit Profile">회원정보 수정</a></li>
+              <li><a href="/index/login/">회원정보 수정</a></li>
               {% else %}
-              <li><a href="/index/profile/" title="Edit Profile">회원정보 수정</a></li>
+              <li><a href="/index/profile/">회원정보 수정</a></li>
               {% endif %}
             </ul>
           </li>
@@ -109,106 +109,68 @@
 
         <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
 
-          <div class="col-lg-3 col-md-6 portfolio-item">
+          <div class="col-lg-4 col-md-6 portfolio-item">
             <div class="portfolio-wrap">
               <img src="{{ poster1.thumbnail }}" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>{{ poster1.title }}</h4>
                 <p>{{ poster1.place }}</p>
-                <div class="portfolio-links">
-                  <a href="{{ poster1.site }}" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
+
               </div>
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6 portfolio-item">
+          <div class="col-lg-4 col-md-6 portfolio-item">
             <div class="portfolio-wrap">
               <img src="{{ poster2.thumbnail }}" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>{{ poster2.title }}</h4>
                 <p>{{ poster2.place }}</p>
-                <div class="portfolio-links">
-                  <a href="{{ poster2.site }}" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
+
               </div>
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6 portfolio-item">
+          <div class="col-lg-4 col-md-6 portfolio-item">
             <div class="portfolio-wrap">
               <img src="{{ poster3.thumbnail }}" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>{{ poster3.title }}</h4>
                 <p>{{ poster3.place }}</p>
-                <div class="portfolio-links">
-                  <a href="{{ poster3.site }}" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
+
               </div>
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6 portfolio-item">
+          <div class="col-lg-4 col-md-6 portfolio-item">
             <div class="portfolio-wrap">
               <img src="{{ poster4.thumbnail }}" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>{{ poster4.title }}</h4>
                 <p>{{ poster4.place }}</p>
-                <div class="portfolio-links">
-                  <a href="{{ poster4.site }}" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
+
               </div>
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6 portfolio-item">
+          <div class="col-lg-4 col-md-6 portfolio-item">
             <div class="portfolio-wrap">
               <img src="{{ poster5.thumbnail }}" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>{{ poster5.title }}</h4>
                 <p>{{ poster5.place }}</p>
-                <div class="portfolio-links">
-                  <a href="{{ poster5.site }}" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
+
               </div>
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6 portfolio-item">
+          <div class="col-lg-4 col-md-6 portfolio-item">
             <div class="portfolio-wrap">
               <img src="{{ poster6.thumbnail }}" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>{{ poster6.title }}</h4>
                 <p>{{ poster6.place }}</p>
-                <div class="portfolio-links">
-                  <a href="{{ poster6.site }}" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <div class="col-lg-3 col-md-6 portfolio-item">
-            <div class="portfolio-wrap">
-              <img src="{{ poster7.thumbnail }}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>{{ poster7.title }}</h4>
-                <p>{{ poster7.place }}</p>
-                <div class="portfolio-links">
-                  <a href="{{ poster7.site }}" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item">
-            <div class="portfolio-wrap">
-              <img src="{{ poster8.thumbnail }}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>{{ poster8.title }}</h4>
-                <p>{{ poster8.place }}</p>
-                <div class="portfolio-links">
-                  <a href="{{ poster8.site }}" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
               </div>
             </div>
           </div>
@@ -319,25 +281,19 @@
           <div class="col-lg-2 col-md-6 footer-links">
             <h4>Links</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#hero">홈</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#portfolio">포스터</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#team">소개</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="/index/performance/">공연/전시정보</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#hero">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#portfolio">Poster</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#team">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/index/performance/">공연/전시 정보</a></li>
                <li><i class="bx bx-chevron-right"></i> <a href="/index/cultureNews/">세계문화뉴스</a></li>
+
             </ul>
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>마이페이지</h4>
+            <h4>Our Services</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="/index/wishlist/">위시리스트</a></li>
-            </ul>
-            <ul>
-              {% if not logineduser %}
-              <li><i class="bx bx-chevron-right"></i> <a href="/index/login/">회원정보 수정</a></li>
-              {% else %}
-              <li><i class="bx bx-chevron-right"></i> <a href="/index/profile/">회원정보 수정</a></li>
-              {% endif %}
+              <li><i class="bx bx-chevron-right"></i> <a href="">Web Development</a></li>
             </ul>
           </div>
 
